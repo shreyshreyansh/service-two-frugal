@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>/setdevice</h1>
+    <form action="/setdevice" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <label for="deviceID">DEVICE ID:</label><br />
+      <input type="text" id="deviceID" name="deviceID" value="" /><br /><br />
+      <label for="deviceType">Device Type:</label><br />
+      <input type="text" id="deviceType" name="deviceType" value="" /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+    <h1>/getalldevices</h1>
+    <form action="/getalldevices" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+    <h1>/getuserdevices</h1>
+    <form action="/getuserdevices" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <label for="userid">UserID:</label><br />
+      <input type="text" id="userid" name="userid" value="" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+    <h1>/getdevice</h1>
+    <form action="/getdevice" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <label for="deviceID">DEVICE ID:</label><br />
+      <input
+        type="text"
+        id="deviceID"
+        name="deviceID"
+        value="HM1432"
+      /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+    <h1>/deletedevice</h1>
+    <form action="/deletedevice" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <label for="deviceID">DEVICE ID:</label><br />
+      <input type="text" id="deviceID" name="deviceID" value="" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+    <h1>/register</h1>
+    <form action="/register" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <label for="userid">UserID:</label><br />
+      <input type="text" id="userid" name="userid" value="" /><br /><br />
+      <label for="username">Name:</label><br />
+      <input type="text" id="username" name="username" value="" /><br /><br />
+      <label for="password">Password:</label><br />
+      <input type="text" id="password" name="password" value="" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+    <h1>/login</h1>
+    <form action="/login" method="POST">
+      <label for="userid">UserID:</label><br />
+      <input type="text" id="userid" name="userid" value="" /><br /><br />
+      <label for="username">Name:</label><br />
+      <input type="text" id="username" name="username" value="" /><br /><br />
+      <label for="password">Password:</label><br />
+      <input type="text" id="password" name="password" value="" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+    <h1>/getallusers</h1>
+    <form action="/getallusers" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+    <h1>/getauser</h1>
+    <form action="/getauser" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <label for="userid">UserID:</label><br />
+      <input type="text" id="userid" name="userid" value="" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+    <h1>/getalltokens</h1>
+    <form action="/getalltokens" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+    <h1>/getatoken</h1>
+    <form action="/getatoken" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <label for="userid">UserID:</label><br />
+      <input type="text" id="userid" name="userid" value="" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+    <h1>/istokenvalid</h1>
+    <form action="/istokenvalid" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+    <h1>/deleteuser</h1>
+    <form action="/deleteuser" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <label for="userid">UserID:</label><br />
+      <input type="text" id="userid" name="userid" value="" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
+  </body>
+</html>

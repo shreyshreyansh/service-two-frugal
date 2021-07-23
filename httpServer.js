@@ -1,0 +1,207 @@
+#!/usr/bin/env node
+const express = require("express");
+const bodyParser = require("body-parser");
+const amqp_connect = require("./amqp_connect");
+const EventEmitter = require("events");
+var eventEmitter = new EventEmitter();
+
+function generateUuid() {
+  return (
+    Math.random().toString() +
+    Math.random().toString() +
+    Math.random().toString()
+  );
+}
+
+const app = express();
+app.use(bodyParser.urlencoded({ extended: "false" }));
+app.use(bodyParser.json());
+app.use(express.static("public"));
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/sensor.html");
+});
+
+app.post("/setdevice", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "setadevice",
+    tokenid: req.body.tokenid,
+    deviceID: req.body.deviceID,
+    deviceType: req.body.deviceType,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
+});
+
+app.post("/getalldevices", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "getalldevices",
+    tokenid: req.body.tokenid,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
+});
+
+app.post("/getuserdevices", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "getuserdevices",
+    tokenid: req.body.tokenid,
+    userid: req.body.userid,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
+});
+
+app.post("/getdevice", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "getdevice",
+    tokenid: req.body.tokenid,
+    deviceID: req.body.deviceID,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
+});
+
+app.post("/deletedevice", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "deletedevice",
+    tokenid: req.body.tokenid,
+    deviceID: req.body.deviceID,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
+});
+
+//---------------------------//
+
+app.post("/register", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "register",
+    tokenid: req.body.tokenid,
+    userid: req.body.userid,
+    username: req.body.username,
+    password: req.body.password,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
+});
+
+app.post("/login", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "login",
+    userid: req.body.userid,
+    username: req.body.username,
+    password: req.body.password,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
+});
+
+app.post("/getallusers", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "getallusers",
+    tokenid: req.body.tokenid,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
+});
+
+app.post("/getauser", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "getauser",
+    tokenid: req.body.tokenid,
+    userid: req.body.userid,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
+});
+
+app.post("/getalltokens", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "getalltokens",
+    tokenid: req.body.tokenid,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
+});
+
+app.post("/getatoken", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "getatoken",
+    tokenid: req.body.tokenid,
+    userid: req.body.userid,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
+});
+
+app.post("/istokenvalid", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "istokenvalid",
+    tokenid: req.body.tokenid,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
+});
+
+app.post("/deleteuser", (req, res) => {
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "deleteuser",
+    tokenid: req.body.tokenid,
+    userid: req.body.userid,
+  };
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
+});
+
+app.listen(5000, function () {
+  console.log("listening on port " + 5000);
+});
+
+var gracefulExit = function () {
+  setTimeout(function () {
+    connection.close();
+    process.exit(0);
+  }, 500);
+};
+
+process.on("SIGINT", gracefulExit).on("SIGTERM", gracefulExit);
