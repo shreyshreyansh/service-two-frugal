@@ -2,6 +2,7 @@ var amqp = require("amqplib/callback_api");
 const EventEmitter = require("events");
 
 var channel = null;
+// connecting to the rabbitmq through in-built amqp function
 amqp.connect("amqp://localhost", function (error0, connection) {
   if (error0) {
     throw error0;
