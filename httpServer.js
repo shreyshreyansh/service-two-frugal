@@ -29,6 +29,9 @@ app.post("/setdevice", (req, res) => {
   var msg1 = {
     route: "setadevice",
     tokenid: req.body.tokenid,
+    userid: req.body.userid,
+    username: req.body.username,
+    role: req.body.role,
     deviceID: req.body.deviceID,
     deviceType: req.body.deviceType,
   };
@@ -121,6 +124,7 @@ app.post("/register", (req, res) => {
     userid: req.body.userid,
     username: req.body.username,
     password: req.body.password,
+    role: req.body.role,
   };
   // adding an event listener with the unique id
   // to listen events from rabbitmq

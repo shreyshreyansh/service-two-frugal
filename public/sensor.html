@@ -11,6 +11,18 @@
     <form action="/setdevice" method="POST">
       <label for="tokenid">TokenID:</label><br />
       <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <label for="userid">UserID:</label><br />
+      <input type="text" id="userid" name="userid" value="" /><br /><br />
+      <label for="username">Username:</label><br />
+      <input type="text" id="username" name="username" value="" /><br /><br />
+      <label for="role">Password:</label><br />
+      <select name="role" id="role">
+        <option value="superAdmin">Super Admin</option>
+        <option value="adminClient">Admin(Client)</option>
+        <option value="adminFlip">Admin(Flip)</option>
+        <option value="userClient">User(Client)</option>
+        <option value="userFlip">User(Flip)</option></select
+      ><br /><br />
       <label for="deviceID">DEVICE ID:</label><br />
       <input type="text" id="deviceID" name="deviceID" value="" /><br /><br />
       <label for="deviceType">Device Type:</label><br />
@@ -67,6 +79,14 @@
       <input type="text" id="username" name="username" value="" /><br /><br />
       <label for="password">Password:</label><br />
       <input type="text" id="password" name="password" value="" /><br /><br />
+      <label for="role">Password:</label><br />
+      <select name="role" id="role">
+        <option value="superAdmin">Super Admin</option>
+        <option value="adminClient">Admin(Client)</option>
+        <option value="adminFlip">Admin(Flip)</option>
+        <option value="userClient">User(Client)</option>
+        <option value="userFlip">User(Flip)</option>
+      </select>
       <input type="submit" value="Submit" />
     </form>
     <br /><br /><br />
