@@ -29,8 +29,12 @@ app.post("/setdevice", (req, res) => {
   var msg1 = {
     route: "setadevice",
     tokenid: req.body.tokenid,
+    userid: req.body.userid,
+    username: req.body.username,
+    role: req.body.role,
     deviceID: req.body.deviceID,
     deviceType: req.body.deviceType,
+    days: req.body.days,
   };
   // adding an event listener with the unique id
   // to listen events from rabbitmq
@@ -110,6 +114,25 @@ app.post("/deletedevice", (req, res) => {
   amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
 });
 
+app.post("/recharge", (req, res) => {
+  // generating unique id to get the response from rabbitmq
+  var correlationId = generateUuid();
+  var msg1 = {
+    route: "recharge",
+    tokenid: req.body.tokenid,
+    userid: req.body.userid,
+    deviceID: req.body.deviceID,
+    days: req.body.days,
+  };
+  // adding an event listener with the unique id
+  // to listen events from rabbitmq
+  eventEmitter.on(correlationId, (msg) => {
+    res.send(JSON.parse(msg));
+  });
+  // connecting to the rabbitmq device queue
+  amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
+});
+
 //---------------------------//
 
 app.post("/register", (req, res) => {
@@ -121,6 +144,7 @@ app.post("/register", (req, res) => {
     userid: req.body.userid,
     username: req.body.username,
     password: req.body.password,
+    role: req.body.role,
   };
   // adding an event listener with the unique id
   // to listen events from rabbitmq

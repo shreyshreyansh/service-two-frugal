@@ -6,15 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+
   <body>
     <h1>/setdevice</h1>
     <form action="/setdevice" method="POST">
       <label for="tokenid">TokenID:</label><br />
       <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <label for="userid">UserID:</label><br />
+      <input type="text" id="userid" name="userid" value="" /><br /><br />
+      <label for="username">Username:</label><br />
+      <input type="text" id="username" name="username" value="" /><br /><br />
+      <label for="role">Password:</label><br />
+      <select name="role" id="role">
+        <option value="superAdmin">Super Admin</option>
+        <option value="adminClient">Admin(Client)</option>
+        <option value="adminFlip">Admin(Flip)</option>
+        <option value="userClient">User(Client)</option>
+        <option value="userFlip">User(Flip)</option></select
+      ><br /><br />
       <label for="deviceID">DEVICE ID:</label><br />
       <input type="text" id="deviceID" name="deviceID" value="" /><br /><br />
       <label for="deviceType">Device Type:</label><br />
-      <input type="text" id="deviceType" name="deviceType" value="" /><br />
+      <input
+        type="text"
+        id="deviceType"
+        name="deviceType"
+        value=""
+      /><br /><br />
+      <label for="password">Recharge for:</label><br />
+      <input type="number" id="days" name="days" value="" /><br /><br />
       <input type="submit" value="Submit" />
     </form>
     <br /><br /><br />
@@ -57,6 +77,19 @@
       <input type="submit" value="Submit" />
     </form>
     <br /><br /><br />
+    <h1>/recharge</h1>
+    <form action="/recharge" method="POST">
+      <label for="tokenid">TokenID:</label><br />
+      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+      <label for="userid">UserID:</label><br />
+      <input type="text" id="userid" name="userid" value="" /><br /><br />
+      <label for="userid">DeviceID:</label><br />
+      <input type="text" id="deviceID" name="deviceID" value="" /><br /><br />
+      <label for="userid">Days:</label><br />
+      <input type="number" id="days" name="days" value="" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br /><br />
     <h1>/register</h1>
     <form action="/register" method="POST">
       <label for="tokenid">TokenID:</label><br />
@@ -67,6 +100,14 @@
       <input type="text" id="username" name="username" value="" /><br /><br />
       <label for="password">Password:</label><br />
       <input type="text" id="password" name="password" value="" /><br /><br />
+      <label for="role">Password:</label><br />
+      <select name="role" id="role">
+        <option value="superAdmin">Super Admin</option>
+        <option value="adminClient">Admin(Client)</option>
+        <option value="adminFlip">Admin(Flip)</option>
+        <option value="userClient">User(Client)</option>
+        <option value="userFlip">User(Flip)</option>
+      </select>
       <input type="submit" value="Submit" />
     </form>
     <br /><br /><br />
