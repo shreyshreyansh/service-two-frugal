@@ -206,38 +206,38 @@ app.post("/getauser", (req, res) => {
   amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
 });
 
-app.post("/getalltokens", (req, res) => {
-  // generating unique id to get the response from rabbitmq
-  var correlationId = generateUuid();
-  var msg1 = {
-    route: "getalltokens",
-    tokenid: req.body.tokenid,
-  };
-  // adding an event listener with the unique id
-  // to listen events from rabbitmq
-  eventEmitter.on(correlationId, (msg) => {
-    res.send(JSON.parse(msg));
-  });
-  // connecting to the rabbitmq user queue
-  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
-});
+// app.post("/getalltokens", (req, res) => {
+//   // generating unique id to get the response from rabbitmq
+//   var correlationId = generateUuid();
+//   var msg1 = {
+//     route: "getalltokens",
+//     tokenid: req.body.tokenid,
+//   };
+//   // adding an event listener with the unique id
+//   // to listen events from rabbitmq
+//   eventEmitter.on(correlationId, (msg) => {
+//     res.send(JSON.parse(msg));
+//   });
+//   // connecting to the rabbitmq user queue
+//   amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
+// });
 
-app.post("/getatoken", (req, res) => {
-  // generating unique id to get the response from rabbitmq
-  var correlationId = generateUuid();
-  var msg1 = {
-    route: "getatoken",
-    tokenid: req.body.tokenid,
-    userid: req.body.userid,
-  };
-  // adding an event listener with the unique id
-  // to listen events from rabbitmq
-  eventEmitter.on(correlationId, (msg) => {
-    res.send(JSON.parse(msg));
-  });
-  // connecting to the rabbitmq user queue
-  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
-});
+// app.post("/getatoken", (req, res) => {
+//   // generating unique id to get the response from rabbitmq
+//   var correlationId = generateUuid();
+//   var msg1 = {
+//     route: "getatoken",
+//     tokenid: req.body.tokenid,
+//     userid: req.body.userid,
+//   };
+//   // adding an event listener with the unique id
+//   // to listen events from rabbitmq
+//   eventEmitter.on(correlationId, (msg) => {
+//     res.send(JSON.parse(msg));
+//   });
+//   // connecting to the rabbitmq user queue
+//   amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
+// });
 
 app.post("/istokenvalid", (req, res) => {
   // generating unique id to get the response from rabbitmq
