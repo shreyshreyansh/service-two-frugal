@@ -25,41 +25,31 @@ app.get("/", (req, res) => {
 
 app.post("/setdevice", (req, res) => {
   // generating unique id to get the response from rabbitmq
-  var correlationId = generateUuid();
+  var correlationId1 = generateUuid();
+  var correlationId2 = generateUuid();
   var msg1 = {
     route: "setadevice",
     tokenid: req.body.tokenid,
-    userid: req.body.userid,
-    username: req.body.username,
-    role: req.body.role,
+    deviceID: req.body.deviceID,
+  };
+  var msg2 = {
+    route: "registerdevice",
+    tokenid: req.body.tokenid,
     deviceID: req.body.deviceID,
     deviceType: req.body.deviceType,
     days: req.body.days,
+    userid: req.body.userid,
+    role: req.body.role,
   };
   // adding an event listener with the unique id
   // to listen events from rabbitmq
-  eventEmitter.on(correlationId, (msg) => {
+  eventEmitter.on(correlationId2, (msg) => {
     // on getting response from rabbitmq
     res.send(JSON.parse(msg));
   });
   // connecting to the rabbitmq device queue
-  amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
-});
-
-app.post("/getalldevices", (req, res) => {
-  // generating unique id to get the response from rabbitmq
-  var correlationId = generateUuid();
-  var msg1 = {
-    route: "getalldevices",
-    tokenid: req.body.tokenid,
-  };
-  // adding an event listener with the unique id
-  // to listen events from rabbitmq
-  eventEmitter.on(correlationId, (msg) => {
-    res.send(JSON.parse(msg));
-  });
-  // connecting to the rabbitmq device queue
-  amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
+  amqp_connect(eventEmitter, correlationId1, msg1, "device_queue");
+  amqp_connect(eventEmitter, correlationId2, msg2, "user_queue");
 });
 
 app.post("/getuserdevices", (req, res) => {
@@ -76,7 +66,7 @@ app.post("/getuserdevices", (req, res) => {
     res.send(JSON.parse(msg));
   });
   // connecting to the rabbitmq device queue
-  amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
+  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
 });
 
 app.post("/getdevice", (req, res) => {
@@ -85,6 +75,7 @@ app.post("/getdevice", (req, res) => {
   var msg1 = {
     route: "getdevice",
     tokenid: req.body.tokenid,
+    userid: req.body.userid,
     deviceID: req.body.deviceID,
   };
   // adding an event listener with the unique id
@@ -94,12 +85,13 @@ app.post("/getdevice", (req, res) => {
     res.send(JSON.parse(msg));
   });
   // connecting to the rabbitmq device queue
-  amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
+  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
 });
 
 app.post("/deletedevice", (req, res) => {
   // generating unique id to get the response from rabbitmq
-  var correlationId = generateUuid();
+  var correlationId1 = generateUuid();
+  var correlationId2 = generateUuid();
   var msg1 = {
     route: "deletedevice",
     tokenid: req.body.tokenid,
@@ -107,11 +99,12 @@ app.post("/deletedevice", (req, res) => {
   };
   // adding an event listener with the unique id
   // to listen events from rabbitmq
-  eventEmitter.on(correlationId, (msg) => {
+  eventEmitter.on(correlationId2, (msg) => {
     res.send(JSON.parse(msg));
   });
   // connecting to the rabbitmq device queue
-  amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
+  amqp_connect(eventEmitter, correlationId1, msg1, "device_queue");
+  amqp_connect(eventEmitter, correlationId2, msg1, "user_queue");
 });
 
 app.post("/recharge", (req, res) => {
@@ -135,11 +128,11 @@ app.post("/recharge", (req, res) => {
 
 //---------------------------//
 
-app.post("/register", (req, res) => {
+app.post("/registeruser", (req, res) => {
   // generating unique id to get the response from rabbitmq
   var correlationId = generateUuid();
   var msg1 = {
-    route: "register",
+    route: "registeruser",
     tokenid: req.body.tokenid,
     userid: req.body.userid,
     username: req.body.username,
@@ -205,39 +198,6 @@ app.post("/getauser", (req, res) => {
   // connecting to the rabbitmq user queue
   amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
 });
-
-// app.post("/getalltokens", (req, res) => {
-//   // generating unique id to get the response from rabbitmq
-//   var correlationId = generateUuid();
-//   var msg1 = {
-//     route: "getalltokens",
-//     tokenid: req.body.tokenid,
-//   };
-//   // adding an event listener with the unique id
-//   // to listen events from rabbitmq
-//   eventEmitter.on(correlationId, (msg) => {
-//     res.send(JSON.parse(msg));
-//   });
-//   // connecting to the rabbitmq user queue
-//   amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
-// });
-
-// app.post("/getatoken", (req, res) => {
-//   // generating unique id to get the response from rabbitmq
-//   var correlationId = generateUuid();
-//   var msg1 = {
-//     route: "getatoken",
-//     tokenid: req.body.tokenid,
-//     userid: req.body.userid,
-//   };
-//   // adding an event listener with the unique id
-//   // to listen events from rabbitmq
-//   eventEmitter.on(correlationId, (msg) => {
-//     res.send(JSON.parse(msg));
-//   });
-//   // connecting to the rabbitmq user queue
-//   amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
-// });
 
 app.post("/istokenvalid", (req, res) => {
   // generating unique id to get the response from rabbitmq
