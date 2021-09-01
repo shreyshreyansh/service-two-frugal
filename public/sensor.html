@@ -5,149 +5,230 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      body {
+        font-family: "Roboto Mono", monospace;
+        background-color: black;
+        color: white;
+      }
+      label {
+        font-size: 1.2rem;
+      }
+      input {
+        border: 2px solid grey;
+        border-radius: 5px;
+        width: 250px;
+        height: 25px;
+      }
+      select {
+        border: 2px solid grey;
+        border-radius: 5px;
+        width: 250px;
+        height: 25px;
+      }
+      .apis {
+        border: 2px solid grey;
+        padding: 0 50px;
+      }
+    </style>
   </head>
 
   <body>
-    <h1>/setdevice</h1>
-    <form action="/setdevice" method="POST">
-      <label for="tokenid">TokenID:</label><br />
-      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
-      <label for="userid">UserID:</label><br />
-      <input type="text" id="userid" name="userid" value="" /><br /><br />
-      <label for="username">Username:</label><br />
-      <input type="text" id="username" name="username" value="" /><br /><br />
-      <label for="role">Password:</label><br />
-      <select name="role" id="role">
-        <option value="superAdmin">Super Admin</option>
-        <option value="adminClient">Admin(Client)</option>
-        <option value="adminFlip">Admin(Flip)</option>
-        <option value="userClient">User(Client)</option>
-        <option value="userFlip">User(Flip)</option></select
-      ><br /><br />
-      <label for="deviceID">DEVICE ID:</label><br />
-      <input type="text" id="deviceID" name="deviceID" value="" /><br /><br />
-      <label for="deviceType">Device Type:</label><br />
-      <input
-        type="text"
-        id="deviceType"
-        name="deviceType"
-        value=""
-      /><br /><br />
-      <label for="password">Recharge for:</label><br />
-      <input type="number" id="days" name="days" value="" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-    <br /><br /><br />
-    <h1>/getuserdevices</h1>
-    <form action="/getuserdevices" method="POST">
-      <label for="tokenid">TokenID:</label><br />
-      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
-      <label for="userid">UserID:</label><br />
-      <input type="text" id="userid" name="userid" value="" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-    <br /><br /><br />
-    <h1>/getdevice</h1>
-    <form action="/getdevice" method="POST">
-      <label for="tokenid">TokenID:</label><br />
-      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
-      <label for="userid">UserID:</label><br />
-      <input type="text" id="userid" name="userid" value="" /><br /><br />
-      <label for="deviceID">DEVICE ID:</label><br />
-      <input
-        type="text"
-        id="deviceID"
-        name="deviceID"
-        value="HM1432"
-      /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-    <br /><br /><br />
-    <h1>/deletedevice</h1>
-    <form action="/deletedevice" method="POST">
-      <label for="tokenid">TokenID:</label><br />
-      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
-      <label for="deviceID">DEVICE ID:</label><br />
-      <input type="text" id="deviceID" name="deviceID" value="" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-    <br /><br /><br />
-    <h1>/recharge</h1>
-    <form action="/recharge" method="POST">
-      <label for="tokenid">TokenID:</label><br />
-      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
-      <label for="userid">UserID:</label><br />
-      <input type="text" id="userid" name="userid" value="" /><br /><br />
-      <label for="userid">DeviceID:</label><br />
-      <input type="text" id="deviceID" name="deviceID" value="" /><br /><br />
-      <label for="userid">Days:</label><br />
-      <input type="number" id="days" name="days" value="" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-    <br /><br /><br />
-    <h1>/register</h1>
-    <form action="/registeruser" method="POST">
-      <label for="tokenid">TokenID:</label><br />
-      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
-      <label for="userid">UserID:</label><br />
-      <input type="text" id="userid" name="userid" value="" /><br /><br />
-      <label for="username">Name:</label><br />
-      <input type="text" id="username" name="username" value="" /><br /><br />
-      <label for="password">Password:</label><br />
-      <input type="text" id="password" name="password" value="" /><br /><br />
-      <label for="role">Password:</label><br />
-      <select name="role" id="role">
-        <option value="superAdmin">Super Admin</option>
-        <option value="adminClient">Admin(Client)</option>
-        <option value="adminFlip">Admin(Flip)</option>
-        <option value="userClient">User(Client)</option>
-        <option value="userFlip">User(Flip)</option>
-      </select>
-      <input type="submit" value="Submit" />
-    </form>
-    <br /><br /><br />
-    <h1>/login</h1>
-    <form action="/login" method="POST">
-      <label for="userid">UserID:</label><br />
-      <input type="text" id="userid" name="userid" value="" /><br /><br />
-      <label for="username">Name:</label><br />
-      <input type="text" id="username" name="username" value="" /><br /><br />
-      <label for="password">Password:</label><br />
-      <input type="text" id="password" name="password" value="" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-    <br /><br /><br />
-    <h1>/getallusers</h1>
-    <form action="/getallusers" method="POST">
-      <label for="tokenid">TokenID:</label><br />
-      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-    <br /><br /><br />
-    <h1>/getauser</h1>
-    <form action="/getauser" method="POST">
-      <label for="tokenid">TokenID:</label><br />
-      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
-      <label for="userid">UserID:</label><br />
-      <input type="text" id="userid" name="userid" value="" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-    <br /><br /><br />
-    <h1>/istokenvalid</h1>
-    <form action="/istokenvalid" method="POST">
-      <label for="tokenid">TokenID:</label><br />
-      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-    <br /><br /><br />
-    <h1>/deleteuser</h1>
-    <form action="/deleteuser" method="POST">
-      <label for="tokenid">TokenID:</label><br />
-      <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
-      <label for="userid">UserID:</label><br />
-      <input type="text" id="userid" name="userid" value="" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-    <br /><br /><br />
+    <div class="apis">
+      <h1 style="text-align: center">API Testing</h1>
+      <h1>Set the User device</h1>
+      <form action="/setdevice" method="POST">
+        <label for="tokenid">Token id of the person who logged in:</label>
+        <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+        <label for="userid"
+          >User id of the user for which you are setting the device:</label
+        >
+        <input type="text" id="userid" name="userid" value="" /><br /><br />
+        <label for="username"
+          >User name of the user for which you are setting the device:</label
+        >
+        <input type="text" id="username" name="username" value="" /><br /><br />
+        <label for="role">Role of the person who logged in:</label>
+        <select name="role" id="role">
+          <option value="superAdmin">Super Admin</option>
+          <option value="adminClient">Admin(Client)</option>
+          <option value="adminFlip">Admin(Flip)</option>
+          <option value="userClient">User(Client)</option>
+          <option value="userFlip">User(Flip)</option></select
+        ><br /><br />
+        <label for="deviceID"
+          >Device id for the user you are registering for:</label
+        >
+        <input type="text" id="deviceID" name="deviceID" value="" /><br /><br />
+        <label for="deviceType"
+          >Device type for the user you are registering for:</label
+        >
+        <input
+          type="text"
+          id="deviceType"
+          name="deviceType"
+          value=""
+        /><br /><br />
+        <label for="password"
+          >Recharge for device for the user you are registering for:</label
+        >
+        <input type="number" id="days" name="days" value="" /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <br /><br />
+      <hr />
+      <br />
+      <h1>Get the User devices</h1>
+      <form action="/getuserdevices" method="POST">
+        <label for="tokenid">Token id of the person who logged in:</label>
+        <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+        <label for="userid"
+          >User id of the person whose devices you want to see:</label
+        >
+        <input type="text" id="userid" name="userid" value="" /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <br /><br />
+      <hr />
+      <br />
+      <h1>Get a particular device</h1>
+      <form action="/getdevice" method="POST">
+        <label for="tokenid">Token id of the person who logged in:</label>
+        <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+        <label for="userid"
+          >User id of the person whose device you want to see:</label
+        >
+        <input type="text" id="userid" name="userid" value="" /><br /><br />
+        <label for="deviceID">Device id of the device you want to see:</label>
+        <input type="text" id="deviceID" name="deviceID" value="" /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <br /><br />
+      <hr />
+      <br />
+      <h1>Delete a particular device</h1>
+      <form action="/deletedevice" method="POST">
+        <label for="tokenid">Token id of the person who logged in:</label>
+        <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+        <label for="deviceID"
+          >Device id of the device you want to delete:</label
+        >
+        <input type="text" id="deviceID" name="deviceID" value="" /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <br /><br />
+      <hr />
+      <br />
+      <h1>Recharge a particular device</h1>
+      <form action="/recharge" method="POST">
+        <label for="tokenid">Token id of the person who logged in:</label>
+        <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+        <label for="userid"
+          >User id of the person whose device you want to recharge:</label
+        >
+        <input type="text" id="userid" name="userid" value="" /><br /><br />
+        <label for="userid"
+          >Device id of the device you want to recharge:</label
+        >
+        <input type="text" id="deviceID" name="deviceID" value="" /><br /><br />
+        <label for="userid">Number of days you want to recharge for:</label>
+        <input type="number" id="days" name="days" value="" /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <br /><br />
+      <hr />
+      <br />
+      <h1>Register a user</h1>
+      <form action="/registeruser" method="POST">
+        <label for="tokenid">Token id of the person who logged in:</label>
+        <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+        <label for="userid">User id of the person you want to register:</label>
+        <input type="text" id="userid" name="userid" value="" /><br /><br />
+        <label for="username"
+          >User name of the person you want to register:</label
+        >
+        <input type="text" id="username" name="username" value="" /><br /><br />
+        <label for="password"
+          >Password of the person you want to register:</label
+        >
+        <input type="text" id="password" name="password" value="" /><br /><br />
+        <label for="role">Role of the person you want to register:</label>
+        <select name="role" id="role">
+          <option value="superAdmin">Super Admin</option>
+          <option value="adminClient">Admin(Client)</option>
+          <option value="adminFlip">Admin(Flip)</option>
+          <option value="userClient">User(Client)</option>
+          <option value="userFlip">User(Flip)</option></select
+        ><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <br /><br />
+      <hr />
+      <br />
+      <h1>Login</h1>
+      <form action="/login" method="POST">
+        <label for="userid">User id of the person who wants to login:</label>
+        <input type="text" id="userid" name="userid" value="" /><br /><br />
+        <label for="username"
+          >User name of the person who wants to login:</label
+        >
+        <input type="text" id="username" name="username" value="" /><br /><br />
+        <label for="password">Password of the person who wants to login:</label>
+        <input type="text" id="password" name="password" value="" /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <br /><br />
+      <hr />
+      <br />
+      <h1>Get all users who are under that admin</h1>
+      <form action="/getallusers" method="POST">
+        <label for="tokenid">Token id of the admin:</label>
+        <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <br /><br />
+      <hr />
+      <br />
+      <h1>Get a user under that admin</h1>
+      <form action="/getauser" method="POST">
+        <label for="tokenid">Token id of the admin:</label>
+        <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+        <label for="userid"
+          >User id of the person who admin wants to see:</label
+        >
+        <input type="text" id="userid" name="userid" value="" /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <br /><br />
+      <hr />
+      <br />
+      <h1>Check if token is valid</h1>
+      <form action="/istokenvalid" method="POST">
+        <label for="tokenid">Token id of the person who logged in:</label>
+        <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <br /><br />
+      <hr />
+      <br />
+      <h1>Delete a paricular User</h1>
+      <form action="/deleteuser" method="POST">
+        <label for="tokenid">Token id of the person who logged in:</label>
+        <input type="text" id="tokenid" name="tokenid" value="" /><br /><br />
+        <label for="userid"
+          >User id of the person who you want to delete:</label
+        >
+        <input type="text" id="userid" name="userid" value="" /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <br /><br /><br />
+    </div>
   </body>
 </html>

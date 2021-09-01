@@ -150,6 +150,7 @@ app.post("/registeruser", (req, res) => {
 
 app.post("/login", (req, res) => {
   // generating unique id to get the response from rabbitmq
+  console.log("Test");
   var correlationId = generateUuid();
   var msg1 = {
     route: "login",
