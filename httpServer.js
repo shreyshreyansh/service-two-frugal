@@ -123,7 +123,7 @@ app.post("/recharge", (req, res) => {
     res.send(JSON.parse(msg));
   });
   // connecting to the rabbitmq device queue
-  amqp_connect(eventEmitter, correlationId, msg1, "device_queue");
+  amqp_connect(eventEmitter, correlationId, msg1, "user_queue");
 });
 
 //---------------------------//
